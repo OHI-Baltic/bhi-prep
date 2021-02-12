@@ -11,7 +11,7 @@ library(tools)
 #'
 #' @return no immediate output; result is the created readme
 
-create_goal_readme <- function(prep_folder){
+create_readme <- function(prep_folder){
   
   dir <- file.path(dir_prep, "prep")
   
@@ -33,8 +33,8 @@ create_goal_readme <- function(prep_folder){
     
     g <- read_csv(file.path(dir_assess, "index", "conf", "goals.csv")) %>% 
       dplyr::filter(goal == str_extract(w, pattern = "[A-Z]{2,3}"))
-    g1 <- ifelse(dim(g)[1] == 0, "Pressure or Resilience Dimensions", g$name)
-    g2 <- ifelse(dim(g)[1] == 0, "pressure or resilience dimensions", paste("the", g$name, "goal"))
+    g1 <- ifelse(dim(g)[1] == 0, "Pressure or Resilience Dimension", g$name)
+    g2 <- ifelse(dim(g)[1] == 0, "a pressure or resilience element", paste("the", g$name, "goal"))
     
     ## rewrite from readme_template.md
     tmp <- readLines(file.path(dir_prep, "supplement", "templates", "readme_template.md")) %>%
@@ -43,7 +43,7 @@ create_goal_readme <- function(prep_folder){
       stringr::str_replace("SUMMARY", sprintf("[Summary of the goal](%s)", rawurl_goal)) %>%
       stringr::str_replace("FULLDATAPREP", sprintf("[Formatted version of the most recent data prep file (with methods and sources)](%s)", rawurl_prep))
     # stringr::str_replace("DATA MANAGEMENT SOP", sprintf("[data management SOP](%s)", rawurl_prep)) %>% 
-    if(is.na(str_extract(w, pattern = "[A-Z]{2,3}"))){ tmp <- tmp[-9][-9]}
+    if(length(str_split(dirname(prep_folder), "/")[[1]]) > 1){ tmp <- tmp[-9][-9][-12][-12]}
     writeLines(tmp, file.path(dir_prep, "prep", dirname(prep_folder), "README.md"))
   }
 }
