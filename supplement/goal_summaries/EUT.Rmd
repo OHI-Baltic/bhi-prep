@@ -1,4 +1,4 @@
-### 1.2 Goal Description {-}
+### 1.2 Goal Description
 
 The Eutrophication sub-goal of the Clean Water goal captures the degree to which local waters are affected by eutrophication. For the BHI, five indicators were included: 
 
@@ -12,7 +12,7 @@ These five indicators are HELCOM core indicators (Baltic Sea Environmental Proce
 
 <br/>
 
-### 1.3 Model & Data {-}
+### 1.3 Model & Data
 
 The geometric means of the status of all five indicators have been calculated for Bornholm Basin, Western Gotland Basin, Eastern Gotland Basin, Northern Baltic Proper and Gulf of Finland. For the other basins only four indicators (without oxygen debt) have been used to calculate the eutrophication status. 
 Moreover, **only offshore data were used for all the core indicators**, due to insufficient data and/or a threshold value associated to coastal areas.
@@ -22,7 +22,7 @@ Moreover, **only offshore data were used for all the core indicators**, due to i
 -	Oxygen debt calculations are based on oxygen data from ICES (CTD and bottle data), and follow the approach introduced in HELCOM Indicator Sheets (2018) where the oxygen debt below halocline is assessed and general additive models are applied to address temporal, seasonal and spatial variation within the basins (more information available at the HELCOM 2013 (BSEP133)).
 
 
-#### 1.3.1 Method Overview {-}
+#### 1.3.1 Method Overview
 
 - Regarding the status calculation, we calculate a five-year moving average for each year in the dataset only for three core indicators (Secchi depth, DIN and DIP) and an annual average for the other two core indicators (Chlorophyll a and Oxygen debt) due to gaps in the data.
 
@@ -34,13 +34,13 @@ Moreover, **only offshore data were used for all the core indicators**, due to i
 <br/>
 
 
-### 1.4 Reference points {-}
+### 1.4 Reference points
 
 The reference points for the eutrophication subgoal are set following the thresholds set by HELCOM (2018) and agreed on by the HELCOM Heads of Delegation (HOD): [Approaches and methods for eutrophication target setting in the Baltic Sea region](https://helcom.fi/media/documents/Eutorophication-targets_BSEP133.pdf)
 
 <br/>
 
-#### 1.4.1 Secchi depth Indicator {-}
+#### 1.4.1 Secchi depth Indicator
 
 _Secchi depth_ reference points are set according to the HELCOM thresholds (HELCOM 2018). They are based on results obtained in the TARGREV project (HELCOM 2013a), taking advantage of the work carried out during the EUTRO PRO project (HELCOM 2009) and national work for WFD. The final targets were set through an expert evaluation process done by the intersessional activity on development of core eutrophication indicators (HELCOM CORE EUTRO) and the targets were adopted by the HELCOM Heads of Delegations. More information: 
 
@@ -49,19 +49,19 @@ _Secchi depth_ reference points are set according to the HELCOM thresholds (HELC
 
 <br/>
 
-#### 1.4.2 Dissolved Inorganic Nitrogen and Phosphorus, and Chlorophyll a {-}
+#### 1.4.2 Dissolved Inorganic Nitrogen and Phosphorus, and Chlorophyll a
 
 HELCOM sub-basin specific reference points for the _winter (DIN), (DIP), and summer chlorophyll_ a are set according to the HELCOM thresholds (HELCOM 2018). 
 
 <br/>
 
-#### 1.4.3 Oxygen Debt Indicator {-}
+#### 1.4.3 Oxygen Debt Indicator
 
 The _oxygen debt_, i.e., "missing" oxygen in relation to fully oxygenated water column, calculations follow the approach introduced in HELCOM Indicator Sheets (2018) and the same threshold values (the 95th percentiles before 1940, detected using change point analysis) are used. There are only two distinct reference points, set for the Baltic Proper (including Gdansk Basin, Eastern and Western Gotland Basins, Northern Baltic Proper, and Gulf of Finland) and for Bornholm Basin. These targets were also set according to HELCOM, as described in [Baltic Sea Environmental Proceedings No 143](https://www.helcom.fi/wp-content/uploads/2019/08/BSEP143.pdf9).
 
 <br/>
 
-### 1.4 Other information {-}
+### 1.5 Other information
 
 External advisors/goalkeepers: Vivi Fleming-Lehtinen.
 

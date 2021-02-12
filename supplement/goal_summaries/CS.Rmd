@@ -1,10 +1,10 @@
-### Goal Description
+### 1.2 Goal Description
 
 The Carbon Storage goal captures the ability of the coastal habitats to remove carbon given their carbon uptake rate and health conditions. A score of 100 means all habitats that contribute to carbon removal are still intact or have been restored and they can function to their full carbon burial potential. Highly productive coastal wetland ecosystems or seagrass store substantially large amount of carbon have the highest sequestration rates of any habitats on earth. They are also threatened by under-regulated coastal development but are amenable to restoration and conservation efforts. 
 
 For the BHI, as data was limited we only used seagrass (_Zostera sp.) coverage data to assess vegetation-based carbon storage. There is high uncertainty associated with using only seagrass data. However, we aim to highlight the need to better monitor marine vegetation in order to understand the carbon storage capacity in coastal areas.  
 
-### Model & Data
+### 1.3 Model & Data
 
 Seagrass data (Zostera sp.) data were downloaded from the [HELCOM Map & Data service](http://maps.helcom.fi/website/Biodiversity/index.html). Select: Biodiversity >> Red List >> Macrophytes >> Least concern (LC) >> Zostera marina (LC). 
 
@@ -15,14 +15,14 @@ The data were classified as follows:
 -	2 = present after year 1995  
 -	3 = present before and after year 1995  
 
-### Reference points
+### 1.4 Reference points
 
 A Zostera sp classification of 2 (present after year 1995) or 3 (present before and after year 1995) have used as reference points. 
 
-### Considerations for BHI 3.0
+<!-- ### 1.5 Considerations for BHI 3.0 -->
 
-As availability of seagrass extent data is limited, higher-resolution and more recent coverage data should be used for analysis. Also, include spatial data from remote sensing for saltmarshes, sheltered shallow bays, lagoons and reed belts, as well as other indicators, such as freshwater macrophyte distribution and monitoring data for the northern Baltic areas.
+<!-- As availability of seagrass extent data is limited, higher-resolution and more recent coverage data should be used for analysis. Also, include spatial data from remote sensing for saltmarshes, sheltered shallow bays, lagoons and reed belts, as well as other indicators, such as freshwater macrophyte distribution and monitoring data for the northern Baltic areas. -->
 
-### Other information
+### 1.5 Other information
 
 *External advisors/goalkeepers: Christoffer Boström and Markku Viitasalo*

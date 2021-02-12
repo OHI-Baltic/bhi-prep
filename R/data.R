@@ -198,238 +198,6 @@ get_nest_data <- function(date_range = c(20050101, 20191231), months = 1:12,
   return(result)
 }
 
-#' get data from one of our primary sources
-#' 
-#' for more information the SMHI API see [here](http://opendata.smhi.se/apidocs/ocobs/index.html)
-#' for more about ICES data portal web services see [here](http://ecosystemdata.ices.dk/WebServices/index.aspx)
-#' for more information on the Copernicus open access hub see [here](https://scihub.copernicus.eu/twiki/do/view/SciHubUserGuide/)
-#' 
-#' @param data_source name of the source
-#' @param date_range list or vector with two values given in YYYYMMDD format
-#' @param months
-#' @param latlon_ranges four-element vector or list: min lat, max lat, min lon, max lon.
-#' @param param_code 
-#' @param search_terms
-#' @param api_key
-#' @param delay
-#' @param cores
-#'
-#' @return result of the data query; parsed and filtered/subsetted response. Object will be a dataframe or raster depending on the data source.
-
-get_input_data <- function(data_source, date_range, months = 1:12,
-                           latlon_ranges = c(53.6016, 65.9071, 9.42077, 30.3471), 
-                           param_codes = NA, search_terms = NA, 
-                           api_key = NULL, delay = 0.5, cores = 1, ...){
-  
-  # data_source = "ICES"; date_range = c("1990-01-01", "2017-1-1");
-  # latlon_ranges = c(53.6016, 65.9071, 9.42077, 30.3471);
-  # param_codes = NA; search_terms = "biota, PCBS";
-  # api_key = NULL; delay = 0.05; cores = NULL;
-  # months = 1:12
-  
-  
-  # ua <- user_agent("http://github.com/OHI-Science/bhi-prep")
-  # api_file <- file.path(dir_B, "api_key.csv")
-  result <- data.frame()
-  i <- 1
-  
-  data_source <- str_to_lower(data_source)
-  if(!is.na(search_terms)){
-    search_terms <- search_terms %>% 
-      str_to_lower() %>% 
-      str_remove_all(",") %>% 
-      str_split(pattern = " ") %>% 
-      unlist()
-  }
-
-  date_begin <- lubridate::ymd(date_range[1])
-  date_end <- lubridate::ymd(date_range[2])
-  if(is.na(date_begin)|is.na(date_end)){
-    stop("issue with dates, check date_range was given in YYYYMMDD format")
-  }
-  yrs <- seq(year(date_begin), year(date_end))
-  months <- str_pad(months, width = 2, side = "left", pad = "0")
-  
-  
-  ## BY DATA SOURCE
-  
-  if(data_source == "ices"){
-    ## ices data center ----
-    
-    ## two different web services offered
-    ## http://ecosystemdata.ices.dk/webservices/index.aspx
-    ## http://dome.ices.dk/Webservices/index.aspx
-    ices_ecosystem_ws <- "http://ecosystemdata.ices.dk/WebServices/EcoSystemWebServices.asmx"
-    ices_dome_ws <- "http://dome.ices.dk/Webservices/DOMEWebServices.asmx"
-    
-    ## some lookup tables for variable options
-    ## other options: /getListParameters and /getListSpecies
-    datasets_df <- xmlParse(paste0(ices_ecosystem_ws, "/getListDatasets")) %>% 
-      xmlToList() %>% lapply(FUN = as.data.frame) %>% rbindlist()
-    grps_df <- xmlParse(paste0(ices_ecosystem_ws, "/getListParamGroup")) %>% 
-      xmlToList() %>% lapply(FUN = as.data.frame) %>% rbindlist()
-    
-    if(length(intersect(c("chlorobiphenyls","pcbs","dioxins","organofluorines","pfos"), search_terms)) != 0){
-      
-      ## use ices 'dome' webservice
-      ## for contaminants chlorobiphenyls, dioxins, organofluorines
-      ## https://vocab.ices.dk codes: OC-CB Chlorobiphenyls, OC-DX Dioxins, O-FL Organofluorines
-      
-      if("biota" %in% search_terms){
-        method <- "/selectContaminantsInBiota?"
-      }
-      if("sediment" %in% search_terms|"sediments" %in% search_terms){
-        method <- "/selectContaminantsInSediment?"
-      } else { stop("searching for contaminants in Biota or Sediments?") }
-      url_base <- paste0(
-        ices_dome_ws, method,
-        "%s&ParamGroup=&CNTRY=%s&Area=&PARAM=&RLABO=&ALABO=&MATRX=&TAXA=&PURPM=&MPROG=")
-      
-      ## Parameter Group
-      tmp <- tibble(
-        code = c("OC-CB", "OC-DX", "O-FL"),
-        key = c("OC%%2DCB", "OC%%2DDX", "O%%2DFL"), # double % because used with sprintf
-        grp = c("chlorobiphenyls", "dioxins", "organofluorines"),
-        abbrev = c("pcbs", "dioxins", "pfos"))
-      url_base <- str_replace(
-        url_base, pattern = "ParamGroup=", 
-        replacement = paste0("ParamGroup=", tmp[tmp$grp %in% search_terms|tmp$abbrev %in% search_terms,"key"]))
-      
-      ## Years-- need start and end years as inputs
-      yrs <- mapply(yrs[-length(yrs)], yrs[2:length(yrs)], function(x, y){sprintf("yearBegining=%s&yearEnd=%s", x, y)})
-    
-      ## Output vars
-      ## table of all dome web service outputs, from dome.ices.dk/Webservices/index.aspx
-      vars <- select(read_csv(file.path(dir_prep, "ref", "lookup_tabs", "dome_ices_vars.csv"), col_types = cols()), var)
-      
-      ## Function to transform list from xml
-      xml_to_df <- function(x){
-        entry <- unlist(x) %>% 
-          data.frame(row.names = str_remove(names(.), "DOMErecord.")) %>% 
-          tibble::rownames_to_column() %>% 
-          merge(vars, by.x = "rowname", by.y = "var", all = TRUE) %>% # will throw error if merging fails...
-          t() %>% 
-          data.frame(row.names = NULL)
-        entry <- entry[2,]
-        return(entry)
-      }
-      to_df_comp <- compiler::cmpfun(xml_to_df)
-      
-    } else {
-      
-      ## for other data, use ices 'ecosystem' webservice
-      
-      url_base <- paste0(
-        ices_ecosystem_ws,
-        "/getICESDataPortalData?",
-        sprintf("minLatitude=%s&maxLatitude=%s&minLongitude=%s&maxLongitude=%s",
-                latlon_ranges[1], latlon_ranges[2], latlon_ranges[3], latlon_ranges[4]),
-        "&area=helcom&dataset=&datatype=&parametergroup=&parameter=&taxa=&matrix=")
-      
-      ws_datasets <- c(
-        "oceanographic",
-        "contaminants and biological effects", 
-        "eggs and larvae", 
-        "historical datasets",
-        "vulnerable marine ecosystems", 
-        "fish trawl survey", 
-        "biological community", 
-        "fish predation (stomach contents)")
-      if(any(search_terms %in% ws_datasets)){
-        key <- datasets_df[str_to_lower(datasets_df$DatasetName) == intersect(search_terms, ws_datasets), "key"] %>% 
-          as.character()
-        url_base <- str_replace(url_base, pattern = "dataset=", replacement = paste0("dataset=", key))
-      }
-      if(any(str_detect(grps_df$paramGroupName, search_terms))){
-        key <- grps_df[str_detect(grps_df$paramGroupName, search_terms), "key"] %>% 
-          as.character()
-        if(length(key) == 1){
-          url_base <- str_replace(url_base, pattern = "parametergroup=", replacement = paste0("parametergroup=", key))
-        } else {stop("be more specific with search terms, to locate specific ICES parameter group...")}
-      }
-      
-      vars <- data.frame(var = c(
-        "Year","Month","day","Datetime","DayNight",
-        "Cruise","Station","Longitude","Latitude","Depth", 
-        "DataSet","Datatype","Parameter", 
-        "Value","Precision","Unit","Original Value","Original Unit", 
-        "Species","Matrix","Depth Class","Age Class","Length Class","sex",
-        "DEPHL","DEPHU","QFLAG","BASIS","NOINP",
-        "SampleID","MeasurementID","ICES Position Note","ICES DateTime Note")
-      )
-      
-      # to_df <- function(x){
-      #   entry <- unlist(x) %>% 
-      #     data.frame(row.names = str_remove(names(.), "DOMErecord.")) %>% 
-      #     tibble::rownames_to_column() %>% 
-      #     merge(vars, by.x = "rowname", by.y = "var", all = TRUE) %>% # will throw error if merging fails...
-      #     t() %>% 
-      #     data.frame(row.names = NULL)
-      #   entry <- entry[2,]
-      #   return(entry)
-      # }
-      # to_df_comp <- compiler::cmpfun(to_df)
-    }
-    
-    data_lst <- list()
-    if(str_detect(url_base, pattern = "CNTRY")){
-      countrycodes <- c("06","07","RU","67","LT","LA","ES","34","77","26")
-      urls <- mapply(expand.grid(yrs, countrycodes)[1], 
-                     expand.grid(yrs, countrycodes)[2],
-                     function(x, y){sprintf(url_base, x, y)})
-    } else {urls <- lapply(yrs, function(x){sprintf(url_base, x)}) %>% unlist()}
-    
-    # result = data.frame()
-    # data_lst = list()
-    # i = 1
-    # t0 = Sys.time()
-    
-    for(u in urls){
-      closeAllConnections()
-      Sys.sleep(delay*i)
-      i <- i + 1
-      
-      xmldoc <- xmlParse(u)
-      rootNode <- xmlRoot(xmldoc)
-      data0 <- xmlSApply(rootNode, function(x){xmlSApply(x, xmlValue)})
-
-      if(class(data0) == "list"){
-        data_lst <- lapply(data0, FUN = to_df_comp) %>% c(data_lst)
-      } else { data_lst <- apply(data0, MARGIN = 2, FUN = to_df_comp) %>% c(data_lst) }
-    }
-
-    # cl <- makeCluster(min(cores, 2))
-    # registerDoParallel(cl)
-    # data_lst <- foreach(i = urls, .packages= c("XML", "magrittr", "stringr"), .combine = c) %dopar% {
-    #   Sys.sleep(delay)
-    #   
-    #   xmldoc <- xmlParse(i)
-    #   rootNode <- xmlRoot(xmldoc)
-    #   data0 <- xmlSApply(rootNode, function(x){xmlSApply(x, xmlValue)})
-    #   
-    #   if(class(data0) == "list"){
-    #     data_lst <- lapply(data0, FUN = to_df_comp) %>% c(data_lst)
-    #   } else { data_lst <- apply(data0, MARGIN = 2, FUN = to_df_comp) %>% c(data_lst) }
-    # }
-    # stopCluster(cl)
-    
-    closeAllConnections()
-    result <- rbindlist(data_lst)
-    result <- setNames(result, sort(vars$var))
-    
-    # Sys.time() - t0
-    
-  }
-  if(str_to_lower(data_source) %in% c("copernicus", "sentinel")){
-    # OData Service Root URI for the Open Access Hub
-    root_uri <- "https://scihub.copernicus.eu/dhus/odata/v1"  
-  }
-  if(str_to_lower(data_source) == "das"){}
-  if(str_to_lower(data_source) == "holas"){}
-  if(str_to_lower(data_source) == "hallbar rent"){}  
-
-  return(result)
-}
 
 #' compare raw data inputs
 #' 
@@ -481,3 +249,59 @@ compare_yrs_data <- function(data1, data2, compare, keys, keep_cols = NA, color_
   return(plot_obj)
 }
 
+#' revise csv file from semicolon to comma delimiters
+#'
+#' @param csv_filepath the filepath to the csv file to edit, including the filename
+#' @param remove_na_cols boolean indicating whether to remove all columns with only NA values
+#' @param overwrite boolean indicating whether to immediately overwrite the csv file with updated version
+#'
+#' @return if overwritten, returns head of updated file read with read_csv, else original table with NA cols removed
+
+semicolon_to_comma <- function(csv_filepath, remove_na_cols = TRUE, overwrite = FALSE){
+  
+  ## read with semicolon delimiter
+  file_semicolon <- read_delim(csv_filepath, delim =  ";")
+  remove_cols <- c()
+  
+  chk <- head(file_semicolon, 15) %>% 
+    mutate(n_comma = str_count(as.name(names(file_semicolon)), ","))
+  comma_delim <- ncol(file_semicolon)==1 & length(unique(chk$n_comma))==1
+  
+  ## if already comma delimited
+  if(comma_delim){
+    message(sprintf(
+      "it appears %s is already comma-delimited", 
+      basename(csv_filepath)
+    ))
+    file_commas <- read_csv(csv_filepath, col_types = cols())
+    chk_cols <- file_commas
+    
+    ## if semicolon delimited
+  } else { chk_cols <- file_semicolon }
+  
+  if(remove_na_cols){
+    for(i in ncol(chk_cols)){
+      column <- chk_cols[, i]
+      if(nrow(column) == sum(is.na(column))){
+        remove_cols <- c(remove_cols, names(column))
+      }
+    }
+    if(length(remove_cols) > 0){
+      print(
+        sprintf(
+          "removing columns with only NAs: %s",
+          paste(remove_cols, collapse = ", ")
+        )
+      )
+    }
+  }
+  file_commas <- chk_cols %>% 
+    select(setdiff(names(chk_cols), remove_cols))
+  
+  if(overwrite & !(comma_delim & !remove_na_cols)){
+    write_csv(file_commas, csv_filepath)
+    file_commas <- read_csv(csv_filepath, col_types = cols()) %>% head()
+  }
+  
+  return(file_commas)
+}

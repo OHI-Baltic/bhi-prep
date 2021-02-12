@@ -1,4 +1,4 @@
-### 1.1 Goal Description {-}
+### 1.2 Goal Description
 
 Marine species hold multiple meanings for humans, ranging from the food provisioning and socio-economic services perspective to aesthetic and religious values across diverse societies and communities. This subgoal captures the status of species that are important to a region because they are relevant to local cultural identity.
 
@@ -21,19 +21,19 @@ Marine species hold multiple meanings for humans, ranging from the food provisio
 - Common eider/
 
 
-### 1.2 Model & Data {-}
+### 1.3 Model & Data
 
 The status of iconic species was evaluated using species observational data from the HELCOM database. A subset of species identified as culturally significant in the region included eight fish (cod, flounder, herring, perch, pike, salmon, trout, and sprat), five mammals (grey seal, harbour seal, ringed seal, harbour porpoise, and European otter), and two birds (sea eagle and common eider). The status of each of these iconic species is a numeric weight corresponding to their Red List threat category (ranging from “extinct” to “least concern”) of the International Union for Conservation of Nature (IUCN).
 
 HELCOM provides species checklists for the Baltic that include distribution and a complete list of all species assessed with IUCN criteria. Species were assigned a _threat category_ (ranging from "extinct" to "least concern") and assigned a weight. The goal score is the average weight of all species assessed.
 
 
-### 1.3 Reference points {-}
+### 1.4 Reference points
 
 A maximum score of 100 will be achieved in the case when all species are categorised as **’Least Concern’**.
 
 
-### 1.4 Other information {-}
+<!-- ### 1.5 Other information -->
 
 
 

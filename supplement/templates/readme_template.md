@@ -1,8 +1,15 @@
-Baltic Health Index: GOAL1
+---
 
-This folder describes METHODS for GOAL2 of the BHI assessment.
+### <font size="13" color="4A68CA"> GOAL1 </font> <br/>
 
-More information about this goal is available HERE1. 
-View the formatted version of the most current `.rmd` file HERE2.
+---
 
-The folders here include the metadata, scripts, and data for each assessement year (i.e., the year the assessment was conducted). The most current year represents the best available data and methods, and previous years are maintained for archival purposes.
+This folder describes methods used to prepare data and routines for collecting and organizing data for **GOAL2** of the BHI assessment.
+
+SUMMARY. 
+
+FULLDATAPREP
+
+The documents here include code, some metadata, and data sources for each assessement year (i.e., the year the assessment was conducted). The most current year represents the best available data (most recent and/or complete) and methods. Previous years are kept for reference but are not maintained.
+
+See our [Shiny dashboard](https://baltic-ohi.shinyapps.io/dashboard/) to explore the assessment results, and learn more.

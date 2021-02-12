@@ -1,0 +1,23 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+[le_liv_regional_employ](https://github.com/OHI-Baltic/bhi-prep/blob/master/layers/le_liv_regional_employ_bhi2019.csv)\
+*Units: number people employed*\
+*Category:*\
+*Subcategory:*\
+*Index Dimension: Status and Trend*\
+*Goal Targets: LIV*\
+<br>
+
+Employment percentages derived from NUTS2 regions employment data from Eurostat, and using populations by NUTS2 regions to downscale then aggregate employment rates to BHI regions. Data source: [Eurostat database lfst_r_lfe2emprt](https://ec.europa.eu/eurostat/web/products-datasets/-/lfst_r_lfe2emprt)\
+*Will add more text here as the layers are prepared for the BHI 2021*
+*nature, name, scaling factors, accuracy, domain, resolution, interval values, keywords*
+
+See [**LIV prep documents**](https://github.com/OHI-Baltic/bhi-prep/blob/master/prep/LIV/v2021/liv_prep.md) for more information about data sources and methods used in creating this layer.
+
+<br>
+

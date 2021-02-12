@@ -5,7 +5,7 @@ output:
     toc_float: true
 ---
 
-[fis_landings](https://github.com/OHI-Science/bhi/blob/master/baltic/layers/fis_landings_bhi2015.csv)\
+[fis_landings](https://github.com/OHI-Baltic/bhi-prep/blob/master/layers/fis_landings_bhi2019.csv)\
 *Units: metric tons*\
 *Category:*\
 *Subcategory:*\
@@ -13,10 +13,11 @@ output:
 *Goal Targets: FIS*\
 <br>
 
-Annual Landings by ICES area and stock.  Data sources:  -ICES\
-*Will add more text here as the layers are prepared for the BHI2.0*
+Annual Landings by ICES area and stock. Data sources: ICES Assessment tools, Stock Assessment Graphs\
+*Will add more text here as the layers are prepared for the BHI 2021*
+*nature, name, scaling factors, accuracy, domain, resolution, interval values, keywords*
 
-See [**FIS prep documents**](https://github.com/OHI-Science/bhi-1.0-archive/blob/draft/baltic2015/prep/FIS/fis_prep.md) for more information about data and methods.
+See [**FIS prep documents**](https://github.com/OHI-Baltic/bhi-prep/blob/master/prep/FIS/v2021/fis_prep.md) for more information about data sources and methods used in creating this layer.
 
 <br>
 

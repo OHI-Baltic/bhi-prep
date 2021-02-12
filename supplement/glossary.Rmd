@@ -1,6 +1,12 @@
 ### 1.1 Glossary {-}
 
-**Baltic Health Index (BHI)**: The BHI is a regional study applying the **OHI framework**. The aim is to provide an integrative and transparent tool to be used by decision-makers to guide management of the Baltic Sea towards increased sustainability. The Baltic’s Ocean Health Index assessments score 9 goals, some of which have sub-goals. **Goal scores** are calculated by modeling data first as Present Status and Likely Future State. Likely Future State is a combination of status, trend, pressures and resilience calculations, which contribute to goal scores according to specified ratios.
+**Baltic Health Index (BHI)**: The BHI is a regional study applying the **OHI framework** (Ocean Health Index. The aim is to provide an integrative and transparent tool to be used by decision-makers to guide management of the Baltic Sea towards increased sustainability. The Baltic’s Ocean Health Index assessments score 9 goals, some of which have sub-goals. **Goal scores** are calculated by modeling data first as Present Status and Likely Future State. Likely Future State is a combination of status, trend, pressures and resilience calculations, which contribute to goal scores according to specified ratios.
+
+**BHI Goals and Subgoals**:
+
+**Indicators**:
+
+**Reference Points**:
 
 **BHI regions**: Scores for are calculated for each region individually and then combined (with an offshore area-weighted average) to produce scores for the entire Baltic Sea. There are 42 BHI regions in the Baltic Sea, created by intersecting exclusive economnic zones (EEZs) with the Baltic Sea subbasins.
 
@@ -9,3 +15,7 @@
 **Status**: Present Status is the sub-goal’s current value compared to the reference point. In many cases, status is initially calculated as a value between 0 and 1, and later rescaled to the 0 to 100 range via a simple multiplication by 100. A status of 100 means that the current status is equal to the target reference point (not pristine, unless that is the agreed upon target!), and 0 means that it is as far from the target reference point as _theoretically_ possible, or a specified lower cut-off point (e.g. secchi depth at zero in the eutrophication subgoal, or 75% of species extinct for biodiversity goal). 
 
 **Trend**: Though these systems have a lot of annual variation, short-term trends (5 years, or 10 years for slow-change variables) are calculated to capture tangential directionality of state over recent years. This dimension is included as a way to reflect how it is not just the immediate state, but the tendancy in the system towards or away from 'good status' that reflects the 'health' of the marine system.
+
+**Pressures**:
+
+**Resilience**:

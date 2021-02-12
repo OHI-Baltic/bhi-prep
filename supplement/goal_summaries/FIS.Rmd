@@ -1,19 +1,19 @@
-### 1.1 Goal Description {-}
+### 1.2 Goal Description
 
 The Fisheries sub-goal of Food Provision describes the ability to maximize the sustainable yield of wild-caught seafood for human consumption. **For the BHI cod and herring stocks in the Baltic Sea were included as wild-caught fisheries**. 
 
 
-### 1.2 Model & Data {-}
+### 1.3 Model & Data
 
 The data used for this goal are cod and herring spawning biomass (SSB) and fishing mortality (F) data. The current status is calculated as a function of the ratio between the single species current biomass at sea (B) and the reference biomass at maximum sustainable yield (BMSY), as well as the ratio between the single species current fishing mortality (F) and the fishing mortality at maximum sustainable yield (FMSY). These ratios (B/Bmsy and F/Fmsy) are converted to scores between 0 and 1 using as one component this [general relationship](https://github.com/OHI-Science/bhi-prep/blob/master/prep/FIS/Fscoresformula.png). This piecewise equation simply converts the F/FMSY value to an F' score that will fall between 0-1 (this function applies a penalty when B/BMSY scores indicate good/underfishing but F/FMSY scores indicate high fisheries related mortality). 
 
 [Cod and herring data can be found here](http://standardgraphs.ices.dk/stockList.aspx). Search for cod or herring, then specify the ecoregion as Baltic Sea and search for the most current assessment. 
 
 
-### 1.3 Reference points {-}
+### 1.4 Reference points
 
 The reference point used for the computation are based on the MSY principle and are described as a functional relationship. MSY means the highest theoretical equilibrium yield that can be continuously taken on average from a stock under existing average environmental conditions without significantly affecting the reproduction process *(European Union 2013, World Ocean Review 2013).* 
 
-### 1.4 Other information {-}
+### 1.5 Other information
 
 External advisors/goalkeepers. Christian Möllmann 

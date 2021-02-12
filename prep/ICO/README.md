@@ -1,8 +1,15 @@
-Baltic Health Index: Iconic Species
+---
 
-This folder describes methods used to prepare data for the Iconic Species goal of the BHI assessment.
+### <font size="13" color="4A68CA"> Iconic Species </font> <br/>
 
-More information about this goal is available [here](https://github.com/OHI-Science/bhi-prep/tree/master/ref/goal_summaries/ICO.Rmd). 
-View the formatted version of the most current `.rmd` file [here](https://github.com/OHI-Science/bhi-prep/tree/master/prep/ICO/v2019/ico_prep.rmd).
+---
 
-The folders here include the metadata, scripts, and data for each assessement year (i.e., the year the assessment was conducted). The most current year represents the best available data and methods, and previous years are maintained for archival purposes.
+This folder describes methods used to prepare data and routines for collecting and organizing data for **the Iconic Species goal** of the BHI assessment.
+
+[Summary of the goal](https://github.com/OHI-Baltic/bhi-prep/tree/master/supplement/goal_summaries/ICO.Rmd). 
+
+[Formatted version of the most recent data prep file (with methods and sources)](https://github.com/OHI-Baltic/bhi-prep/tree/master/prep/ICO/v2021/ico_prep.md)
+
+The documents here include code, some metadata, and data sources for each assessement year (i.e., the year the assessment was conducted). The most current year represents the best available data (most recent and/or complete) and methods. Previous years are kept for reference but are not maintained.
+
+See our [Shiny dashboard](https://baltic-ohi.shinyapps.io/dashboard/) to explore the assessment results, and learn more.

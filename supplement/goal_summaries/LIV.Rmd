@@ -1,11 +1,11 @@
-### 1.1 Goal Description {-}
+### 1.2 Goal Description
 
 The Livelihoods sub-goal describes livelihood quantity and quality for people living on the coast. Livelihoods includes the number of jobs in different marine related sectors. Ideally, this sub-goal would speak to the quality and quantity of marine jobs in an area. It would encompass all the marine sectors that supply jobs and wages to coastal communities, incorporating information on the sustainability of different sectors while also telling about the working conditions and job satisfaction.
 
 Due to an earlier lack of sector-specific employment information, the BHI currently uses overall employment rates in the Baltic coastal regions to represent ocean-dependent livelihood. The assumption being that relative employment rates in marine sectors mirror those in the regions' economies overall. Subsequent iterations of the BHI will use Blue Growth Report employment data, to more accurately represent the societal value derived from marine livelihoods in the Baltic Sea.
 
 
-### 1.2 Model & Data {-}
+### 1.3 Model & Data
 
 We downloaded [Eurostat country-level employment rate and target employment rate](http://ec.europa.eu/eurostat/tgm/table.do?tab=table&init=1&plugin=0&language=en&pcode=t2020_10&tableSelection=1) from most recent years and select a subset of years based on years included in ECO status, which is based on the Blue Growth reports. (This data is not available for Russia. [Another dataset is downloaded with information for Russia.](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=naida_10_pe&lang=en))
 
@@ -13,11 +13,11 @@ We downloaded [Eurostat country-level employment rate and target employment rate
 Regional employment numbers are derived using NUTS2 eployment rates and population density information: NUTS2 employment percentages are multiplied by the population in the 25km inland buffer associated with a BHI region. These employment numbers are summed across all areas (NUTS2 regions intersected with BHI regions) associated with a BHI region to get the total employed people in the BHI region. Regional employment rate = number of people employed/regional population. For country data, we have employment rate data directly.
 
 
-### 1.3 Reference points {-}
+### 1.4 Reference points
 
 Reference point is max Region:Country employment ratio of the past five years, and highest country employment in the last fifteen years (77.4%). The region-to-country ratio puts the value into local context, then adjusting with respect to highest country employment rate in the last fifteen years from around the Baltic Sea situates the ratio in broader geographic context.
 
 
-### 1.4 Other information {-}
+### 1.5 Other information
 
 External advisors/goalkeepers: Wilfried Rickels.

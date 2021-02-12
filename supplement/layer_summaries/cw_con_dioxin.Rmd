@@ -1,0 +1,23 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+[cw_con_dioxin](https://github.com/OHI-Baltic/bhi-prep/blob/master/layers/cw_con_dioxin_bhi2019.csv)\
+*Units: pg_per_g_teq*\
+*Category:*\
+*Subcategory:*\
+*Index Dimension: Status and Trend*\
+*Goal Targets: CW*\
+<br>
+
+Dioxin and dioxin-like PCB congeners TEQ sum by date and location, derived from measurements obtained from ICES database.\
+*Will add more text here as the layers are prepared for the BHI 2021*
+*nature, name, scaling factors, accuracy, domain, resolution, interval values, keywords*
+
+See [**CW prep documents**](https://github.com/OHI-Baltic/bhi-prep/blob/master/prep/CW/v2021/cw_prep.md) for more information about data sources and methods used in creating this layer.
+
+<br>
+

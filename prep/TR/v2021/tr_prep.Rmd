@@ -1,0 +1,122 @@
+---
+title: "Tourism (TR) Goal Data Prep"
+output:
+  github_document:
+    toc: true
+    toc_depth: 3
+params: 
+    datasource: csv
+always_allow_html: true
+---
+
+
+```{r tr preamble, echo = FALSE, include = FALSE, error = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE, results = "show", fig.width = 9.5, fig.height = 6)
+source(here::here("R", "setup.R"))
+source(here::here("R", "spatial.R"))
+
+dir <- here::here("prep", "TR", "v2021")
+bkgd_path <- here::here("supplement", "goal_summaries", "TR.Rmd")
+glossary_path <- here::here("supplement", "glossary.Rmd")
+```
+
+<br>
+
+## 1. Background
+
+```{r glossary, child = glossary_path, results = "asis", echo = FALSE}
+```
+
+<br>
+
+```{r tr background, child = bkgd_path, results = "asis", echo = FALSE}
+```
+
+<br/>
+
+## 2. Data
+
+This prep document is used to generate and explore the following data layers:
+
+- `LAYER1_bhi2019.csv` 
+- `LAYER2_bhi2019.csv` 
+- `LAYER3_bhi2019.csv` 
+
+These are saved to the `layers` folder. Saved to `prep/TR/v2021/intermediate` are intermediate datasets: `DATASETINTEMED1.csv` and `DATASETINTEMED2.csv`. All these are derived from or informed by the raw datasets from RAW DATA SOURCES.
+
+<br>
+
+### 2.1 Datasets with Sources
+<br/>
+
+#### 2.1.1 DATA NAME/VARIABLE {-}
+
+**DATASET SUBSET/SUBGROUP NAME/VARIABLE**  
+<!-- dataset save location BHI_share/BHI 3.0/Goals/ -->
+
+```{r echo = FALSE}
+tab <- t(data.frame(
+  c("[option]:", "[specification]"), 
+  c("[option]:", "[specification]")))
+
+colnames(tab) <- c("Option", "Specification")
+rownames(tab) <- NULL
+
+knitr::kable(tab, caption = "Source: [ABC database](URL/LINK) <br/> Downloaded DATE by NAME")
+```
+
+---
+
+<br/>
+
+
+### 2.2 Centralization & Normalization
+
+```{r tr load raw data, echo = TRUE, message = FALSE, warning = FALSE, results = "hide"}
+## root location of the raw data
+dir_rawdata <- file.path(dir_B, "Goals", "TR")
+```
+
+#### 2.2.1 Rename Fields/Variables
+
+#### 2.2.2 Standardize Units
+
+#### 2.2.3 Save to BHI Database
+
+<br/>
+
+### 2.3 Initial Data Exploration
+
+#### 2.3.1 Compare versus Previous Years Data
+
+#### 2.3.2 Timeseries Plots
+
+```{r CODE CHUNK WITH FIGURE OR GRAPH, message = FALSE, echo = TRUE, fig.width = 9.5, fig.height = 4.5}
+```
+
+#### 2.3.3 Map
+
+
+<br/>
+
+## 3. Prep: Wrangling & Derivations, Checks/Evaluation, Gapfilling
+
+<br/>
+
+## 4. Visualizing Data Layers
+
+### 4.1 Map
+
+```{r SOME MAP, message = FALSE, echo = TRUE, fig.width = 9.5}
+
+```
+
+<br>
+
+## 5. Considerations for `BHI4`
+
+<br>
+
+## 6. References
+
+

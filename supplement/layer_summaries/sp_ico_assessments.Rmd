@@ -1,0 +1,23 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+[sp_ico_assessments](https://github.com/OHI-Baltic/bhi-prep/blob/master/layers/sp_ico_assessments_bhi2019.csv)\
+*Units: threat category*\
+*Category:*\
+*Subcategory:*\
+*Index Dimension: Status and Trend*\
+*Goal Targets: ICO*\
+<br>
+
+Baltic Sea iconic species by subbasin with IUCN Red List threat categories, to be used in within-taxa weighted averages with IUCN threat categories assigned numeric weights. Within-taxa weighted averages are combined into biodiversity status score using a geometric mean.\
+*Will add more text here as the layers are prepared for the BHI 2021*
+*nature, name, scaling factors, accuracy, domain, resolution, interval values, keywords*
+
+See [**ICO prep documents**](https://github.com/OHI-Baltic/bhi-prep/blob/master/prep/ICO/v2021/ico_prep.md) for more information about data sources and methods used in creating this layer.
+
+<br>
+

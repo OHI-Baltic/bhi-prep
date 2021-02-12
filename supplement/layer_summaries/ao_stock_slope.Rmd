@@ -5,7 +5,7 @@ output:
     toc_float: true
 ---
 
-[ao_stock_slope](https://github.com/OHI-Science/bhi/blob/master/baltic/layers/ao_stock_slope_bhi2015.csv)\
+[ao_stock_slope](https://github.com/OHI-Baltic/bhi-prep/blob/master/layers/ao_stock_slope_bhi2019.csv)\
 *Units: trend score*\
 *Category:*\
 *Subcategory:*\
@@ -13,10 +13,11 @@ output:
 *Goal Targets: AO*\
 <br>
 
-Mean slopes of all monitoring time series used for HELCOM core indicators for coastal fish populations\
-*Will add more text here as the layers are prepared for the BHI2.0*
+HELCOM core indicators for coastal fish populations\
+*Will add more text here as the layers are prepared for the BHI 2021*
+*nature, name, scaling factors, accuracy, domain, resolution, interval values, keywords*
 
-See [**AO prep documents**](https://github.com/OHI-Science/bhi-1.0-archive/blob/draft/baltic2015/prep/AO/ao_prep.md) for more information about data and methods.
+See [**AO prep documents**](https://github.com/OHI-Baltic/bhi-prep/blob/master/prep/AO/v2021/ao_prep.md) for more information about data sources and methods used in creating this layer.
 
 <br>
 

@@ -1,2 +1,0 @@
-## Spatial Data Layers Prep
-In this folder are folders for preparation of spatial data used to create data layers for multiple goals, or for use in index score calculation after the data preparation steps.
