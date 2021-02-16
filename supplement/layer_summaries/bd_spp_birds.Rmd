@@ -1,0 +1,23 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+[bd_spp_birds](https://github.com/OHI-Baltic/bhi-prep/blob/master/layers/bd_spp_birds_bhi2019.csv)\
+*Units: biological quality ratio*\
+*Category:*\
+*Subcategory:*\
+*Index Dimension: Status and Trend*\
+*Goal Targets: BD*\
+<br>
+
+See goal description above or data prep documents for more information.\
+*Will add more text here as the layers are prepared for the BHI 2021*
+*nature, name, scaling factors, accuracy, domain, resolution, interval values, keywords*
+
+See [**BD prep documents**](https://github.com/OHI-Baltic/bhi-prep/blob/master/prep/BD/v2021/bd_prep.md) for more information about data sources and methods used in creating this layer.
+
+<br>
+

@@ -1,5 +1,5 @@
 ## Libraries
-source(file.path(here::here(), "R", "setup.R"))
+source(here::here("R", "setup.R"))
 library(tools)
 
 ## Functions
@@ -218,9 +218,10 @@ readme_outline <- function(folder_filepath, type_objects = "files", delim = ",")
 make_layer_summaries <- function(){
   
   ## layers information
-  layers0 <- readr::read_csv(file.path(dir_assess, "index", "layers.csv"))
+  # layers0 <- readr::read_csv(file.path(dir_assess, "index", "layers.csv"))
+  layers0 <- readr::read_csv("https://raw.githubusercontent.com/OHI-Baltic/bhi/master/index/layers.csv")
   lyr_csv <- layers0 %>%
-    filter(name != "proxy_layer") %>% 
+    # filter(name != "proxy_layer") %>% 
     select(targets, name, layer, description, units, filename) %>% 
     mutate(description = ifelse(is.na(description), "See goal description above or data prep documents for more information.", description)) %>% 
     mutate(description = str_remove_all(description, pattern = "\\n\\n\\n")) %>% 
@@ -281,7 +282,7 @@ make_layer_summaries <- function(){
   ## create docs
   lyrs_names <- lyr_csv$layer %>% sort()
   for(lyr in lyrs_names){
-    make_file <- file.path(here::here(), "supplement", "layer_summaries", paste(lyr, "Rmd", sep = "."))
+    make_file <- here::here("supplement", "layer_summaries", paste(lyr, "Rmd", sep = "."))
     if(file.exists(make_file)){file.remove(make_file)}
     file.create(make_file)
     

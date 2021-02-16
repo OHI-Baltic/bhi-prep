@@ -1,0 +1,23 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+[cw_tra_status](https://github.com/OHI-Baltic/bhi-prep/blob/master/layers/cw_tra_status_bhi2015.csv)\
+*Units: status score*\
+*Category:*\
+*Subcategory:*\
+*Index Dimension: Status and Trend*\
+*Goal Targets: CW*\
+<br>
+
+See goal description above or data prep documents for more information.\
+*Will add more text here as the layers are prepared for the BHI 2021*
+*nature, name, scaling factors, accuracy, domain, resolution, interval values, keywords*
+
+See [**CW prep documents**](https://github.com/OHI-Baltic/bhi-prep/blob/master/prep/CW/v2021/cw_prep.md) for more information about data sources and methods used in creating this layer.
+
+<br>
+
