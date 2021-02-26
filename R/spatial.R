@@ -175,7 +175,7 @@ join_rgns_info <- function(dataset, helcomID_col = "helcom_id", country_col = "c
   } else {
     bhi_rgns_df <- BHI_rgns_shp %>% 
       as_tibble() %>% 
-      select(rgn_nam, rgn_key, HELCOM_ID, BHI_ID)
+      dplyr::select(rgn_nam, rgn_key, HELCOM_ID, BHI_ID)
     colnames(bhi_rgns_df) <- stringr::str_to_lower(colnames(bhi_rgns_df))
     
     ## join by helcom_id then use combination of helcom_id and country name/key to determine bhi_id
