@@ -120,7 +120,7 @@ join_rgns_info <- function(dataset, helcomID_col = "helcom_id", country_col = "c
     if(!is.null(buffer_shp)){
       data_rgns_joined <- rbind(data_rgns_joined, data_buff_sf)
       duplicates <- data_rgns_joined %>% 
-        select(names(data_sf0)) %>% 
+        dplyr::select(names(data_sf0)) %>% 
         st_drop_geometry() %>% 
         group_by_all() %>% 
         summarize(count = n()) %>% 
@@ -130,12 +130,12 @@ join_rgns_info <- function(dataset, helcomID_col = "helcom_id", country_col = "c
         ## delete only NAs for BHI_ID etc where count is non-NA i.e. where are duplicates,
         ## effectively keeping only NAs where the points were not within BHI assessment area...
         filter(!(is.na(BHI_ID) & !is.na(count))) %>% 
-        select(-count)
+        dplyr::select(-count)
     }
     
     ## check if any points are not matched with a BHI id ----
     test <- data_rgns_joined %>% 
-      select(
+      dplyr::select(
         zn = one_of("station", country_col, helcomID_col), 
         yr = starts_with("year"), 
         BHI_ID
@@ -166,7 +166,7 @@ join_rgns_info <- function(dataset, helcomID_col = "helcom_id", country_col = "c
     if(!return_spatial){
       data_rgns_joined <- data_rgns_joined %>% 
         st_drop_geometry() %>% 
-        select(-Area_km2_BHI, -Area_km2_ICES) %>%
+        dplyr::select(-Area_km2_BHI, -Area_km2_ICES) %>%
         mutate(Subbasin = as.character(Subbasin), HELCOM_ID = as.character(HELCOM_ID))
     }
   
