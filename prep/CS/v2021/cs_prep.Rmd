@@ -11,6 +11,7 @@ always_allow_html: true
 
 
 ```{r cs preamble, echo = FALSE, include = FALSE, error = FALSE}
+
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE, results = "show", fig.width = 9.5, fig.height = 6)
 source(here::here("R", "setup.R"))
 source(here::here("R", "spatial.R"))
@@ -18,6 +19,10 @@ source(here::here("R", "spatial.R"))
 dir <- here::here("prep", "CS", "v2021")
 bkgd_path <- here::here("supplement", "goal_summaries", "CS.Rmd")
 glossary_path <- here::here("supplement", "glossary.Rmd")
+
+## root location of the raw data
+dir_rawdata <- file.path(dir_B, "Goals", "CS")
+dir_intermediate <- file.path(dir_rawdata, "intermediate")
 ```
 
 <br>
@@ -64,6 +69,8 @@ Values are coded:
 2 = present after year 1995
 3 = present before and after year 1995
 
+10km grid cell
+
 <!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
 ```{r echo = FALSE}
 tab <- t(data.frame(
@@ -76,8 +83,6 @@ rownames(tab) <- NULL
 
 knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/dd90a6aa-1d65-4158-a2e7-7ca3ee87d615) <br/> Downloaded 23 February 2021 by Andrea De Cervo")
 ```
-
----
 
 <br/>
 
@@ -410,8 +415,62 @@ knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metada
 ### 2.2 Centralization & Normalization
 
 ```{r cs load raw data, echo = TRUE, message = FALSE, warning = FALSE, results = "hide"}
-## root location of the raw data
-dir_rawdata <- file.path(dir_B, "Goals", "CS")
+### find a code to load multiple shp 
+## load helcom species
+macrophytes <- sf::st_read(file.path(
+  dir_rawdata, "HELCOM_species", "Zostera_marina_LC",
+  "Join_macrophytes.shp"
+)) # CRS: 3035 
+
+# crs(zostera_lc)
+# "+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs "
+
+chara_con_lc <- sf::st_read(file.path(
+  dir_rawdata, "HELCOM_species", "Chara_connivens_LC",
+  "Join_macrophytes.shp"
+)) # CRS: 3035
+
+chara_tom_lc <- sf::st_read(file.path(
+  dir_rawdata, "HELCOM_species", "Chara_tomentosa_LC",
+  "Join_macrophytes.shp"
+)) # CRS: 3035
+
+chara_hor_nt <- sf::st_read(file.path(
+  dir_rawdata, "HELCOM_species", "Chara_horrida_NT",
+  "Join_macrophytes.shp"
+)) # CRS: 3035
+
+crassula_nt <- sf::st_read(file.path(
+  dir_rawdata, "HELCOM_species", "Crassula_aquatica_NT",
+  "Join_macrophytes.shp"
+)) # CRS: 3035
+
+furcellaria_lc <- sf::st_read(file.path(
+  dir_rawdata, "HELCOM_species", "Furcellaria_lumbricalis_LC",
+  "Join_macrophytes.shp"
+)) # CRS: 3035
+
+persicaria_en <- sf::st_read(file.path(
+  dir_rawdata, "HELCOM_species", "Persicaria_foliosa_EN",
+  "Join_macrophytes.shp"
+)) # CRS: 3035
+
+potamogeton_nt <- sf::st_read(file.path(
+  dir_rawdata, "HELCOM_species", "Potamogeton_friesii_NT",
+  "Join_macrophytes.shp"
+)) # CRS: 3035
+
+## load helcom habitats
+# library(raster)
+lagoons <- raster(file.path(dir_rawdata, "HELCOM_habitats", "Coastal_lagoons_1150", "Coastal_lagoons_(1150).tif"))
+lagoons_brick <- brick(file.path(dir_rawdata, "HELCOM_habitats", "Coastal_lagoons_1150", "Coastal_lagoons_(1150).tif"))
+plot(lagoons)
+plot(lagoons_brick)
+
+
+bays <- raster(file.path(dir_rawdata, "HELCOM_habitats", "Large_shallow_inlets_and_bays_1160", "Large_shallow_inlets_and_bays_(1160).tif"))
+plot(bays)
+
 ```
 
 #### 2.2.1 Rename Fields/Variables
@@ -423,6 +482,126 @@ dir_rawdata <- file.path(dir_B, "Goals", "CS")
 <br/>
 
 ### 2.3 Initial Data Exploration
+
+```{r cs setup spatial functions and files, warning = FALSE, include = FALSE}
+## in order to assign bhi regions to data, must run this function first, to load required shapefiles:
+regions_shape(sp_dir = file.path(dirname(dir_B), "Shapefiles"))
+dir_A <- file.path(dirname(dir_prep), "bhi-data")
+
+bhi_shp <- sf::st_read(file.path(
+  dir_A, "Shapefiles", "BHI_shapefile",
+  "BHI_shapefile.shp"
+)) # CRS: 4326
+
+
+bhi <- rgdal::readOGR(dsn = path.expand(file.path(dir_A, "Shapefiles", "BHI_shapefile")),
+                      layer = 'BHI_shapefile') 
+# crs(bhi)
+# "+proj=longlat +datum=WGS84 +no_defs "
+macrophytes <- rgdal::readOGR(dsn = path.expand(file.path(dir_rawdata, "HELCOM_species", 
+                                                          "Zostera_marina_LC")),
+                      layer = 'Join_macrophytes') 
+
+## transform macrophytes to bhi coordinate reference system (CRS)
+# macrophytes_crs <- st_set_crs(macrophytes, "+proj=longlat +datum=WGS84 +no_defs") %>% 
+#  gather(key = "species", value = "presence", -CELLCODE, -geometry)
+
+## transform macrophytes to bhi coordinate reference system (CRS)
+macrophytes_transf <- spTransform(macrophytes, bhi@proj4string) 
+  
+basin_lookup <- file.path(dir_prep, "supplement", "lookup_tabs", "rgns_complete.csv") %>% 
+  read_csv() %>%
+  dplyr::select(bhi_id = region_id, country = eez, subbasin, rgn_nam = region_name, HELCOM_ID = helcom_id) %>%
+  mutate(
+    subbasin = as.character(subbasin),
+    rgn_nam = as.character(rgn_nam)
+  )
+```
+
+
+```{r intersect bhi and macrophytes, echo=FALSE, message=FALSE, cache=TRUE}
+library(rgdal)  # install.packages('rgdal')
+library(raster) # install.packages('raster')
+library(rgeos)  # install.packages('rgeos')
+library(sp)
+# bhi <- gSimplify(bhi, tol = 0.00001)
+# helcom_mpas <- gSimplify(helcom_mpas, tol = 0.00001)
+
+# Need to 'buffer' both bhi and macrophytes shapefiles before intersecting
+bhi_buff <- gBuffer(bhi, byid=TRUE, width=0)
+macrophytes_buff <- gBuffer(macrophytes_transf, byid=TRUE, width=0) 
+
+macrophytes_bhi <- raster::intersect(macrophytes_buff, bhi_buff)
+# system.time({mpa_bhi <- raster::intersect(helcom_mpas, bhi_transf)})
+## system.time({mpa_bhi <- raster::intersect(mpa, bhi)}) # large file size and took hours to run. bhi ~ 45.5 Mb, mpa ~ 8.7 Mb.
+View(macrophytes_bhi@data)
+
+## save intersected shapefile
+writeOGR(macrophytes_bhi, dsn = path.expand(dir_intermediate), layer = 'macrophytes_bhi', driver = 'ESRI Shapefile', overwrite = TRUE) 
+
+```
+
+
+```{r CODE CHUNK WITH FIGURE OR GRAPH, message = FALSE, echo = TRUE, fig.width = 9.5, fig.height = 4.5}
+regions_shape()
+library(leaflet)
+# read intersected shapefile
+macro_bhi <- sf::st_read(file.path(
+  dir_intermediate, 
+  "macrophytes_bhi.shp"
+)) %>% 
+  rename(helcom_id = HELCOM_ID, 
+         country = rgn_nam) %>% 
+  gather(key = "species", value = "presence", -CELLCODE, -country, - Subbasin, -BHI_ID, 
+         -helcom_id, -Area_km2, -geometry)
+
+plot(st_geometry(macro_bhi), axes = TRUE)
+
+## make basemap
+basemap <- ggplot2::ggplot(rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")) + 
+  geom_sf(size = 0.1, color = "burlywood", alpha = 0.4) +
+  scale_x_continuous(limit = c(4, 32)) +
+  scale_y_continuous(limit = c(53.5, 66)) +
+  theme(panel.background = element_rect(fill = "#F8FBFC", color = "#E2EEF3"))
+
+bhi_rgns_simple <- rmapshaper::ms_simplify(input = BHI_rgns_shp) %>% sf::st_as_sf()
+
+basemap +
+  geom_sf(data = bhi_rgns_simple, fill = "white", size = 0.2, color = "burlywood") +
+  geom_sf(
+    mapping = aes(colour = presence),
+    data = sf::st_as_sf(
+      macro_bhi, 
+      crs = 4326
+    ),
+    size = 1.8
+  ) +
+  labs(x = NULL, y = NULL, colour = "Monitoring area") +
+  ggtitle("Sampling Locations")
+
+# map polygons
+ggplot() + 
+  geom_sf(data = macro_bhi, mapping = aes(fill = presence), show.legend = T) +
+  coord_sf()
+
+library(dplyr)
+library(raster)
+
+# combine mpa_status with shapefile data
+macrohytes_shp <- macro_bhi %>%
+  dplyr::rename(country = rgn_nam,
+                eez_area_km2 = Area_km2) %>% 
+  # join the basin_lookup which has slighly different bhi_region_areas
+  right_join(basin_lookup, by = c("BHI_ID" = "bhi_id"))
+
+macrophytes_rgns <- join_rgns_info(
+  macro_bhi, helcomID_col = "helcom_id", country_col = "country", 
+  latlon_vars = c("^lat", "^lon"), return_spatial = FALSE, 
+  buffer_shp = NULL
+) 
+
+
+```
 
 #### 2.3.1 Compare versus Previous Years Data
 
