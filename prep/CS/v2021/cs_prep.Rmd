@@ -71,6 +71,8 @@ Values are coded:
 
 10km grid cell
 
+_The dataset also contains observations of Chara connivens (LC), Chara tomentosa (LC), Furcellaria lumbricalis (LC), Chara horrida (NT), Potamogeton friesii (NT), Crassula aquatica (NT), Persicaria foliosa (EN)._  
+
 <!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
 ```{r echo = FALSE}
 tab <- t(data.frame(
@@ -86,201 +88,6 @@ knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metada
 
 <br/>
 
-**Chara connivens observations (LC)**
-
-Observations of Chara connivens were collected from the Baltic Sea area for HELCOM Red List species list.
-Chara connivens has been placed to the Red List category of Least Concern (LC) species.
-
-Dataset for download contains spatial grid of the Baltic Sea. 
-Distribution of the species can be found in corresponding name column. 
-Values are coded:
-0 = no observations
-1 = present before year 1995 or in 1995
-2 = present after year 1995
-3 = present before and after year 1995
-
-<!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
-```{r echo = FALSE, results = "asis"}
-tab <- t(data.frame(
-  c("Biodiversity:", "Red List"), 
-  c("Macrophytes:", "Least Concern (LC)"),
-  c("Least Concern (LC)", "Chara connivens (LC)")))
-
-colnames(tab) <- c("Option", "Specification")
-rownames(tab) <- NULL
-
-knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/fb24fbca-6c40-4958-9eed-251324fd94c8) <br/> Downloaded 23 February 2021 by Andrea De Cervo") 
-```
-
-<br/>
-
-**Chara tomentosa observations (LC)**
-
-Observations of Chara tomentosa were collected from the Baltic Sea area for HELCOM Red List species list.
-Chara tormentosa has been placed to the Red List category of Least Concern (LC) species.
-
-Dataset for download contains spatial grid of the Baltic Sea. 
-Distribution of the species can be found in corresponding name column. 
-Values are coded:
-0 = no observations
-1 = present before year 1995 or in 1995
-2 = present after year 1995
-3 = present before and after year 1995
-
-<!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
-```{r echo = FALSE, results = "asis"}
-tab <- t(data.frame(
-  c("Biodiversity:", "Red List"), 
-  c("Macrophytes:", "Least Concern (LC)"),
-  c("Least Concern (LC)", "Chara tormentosa (LC)")))
-
-colnames(tab) <- c("Option", "Specification")
-rownames(tab) <- NULL
-
-knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/906e22f0-6145-4c3c-8eac-cdc4b27aa476) <br/> Downloaded 23 February 2021 by Andrea De Cervo") 
-```
-
-<br/>
-
-**Furcellaria lumbricalis observations (LC)**
-
-Observations of Furcellaria lumbricalis were collected from the Baltic Sea area for HELCOM Red List species list.
-Furcellaria lumbricalis has been placed to the Red List category of Least Concern (LC) species.
-
-Dataset for download contains spatial grid of the Baltic Sea. 
-Distribution of the species can be found in corresponding name column. 
-Values are coded:
-0 = no observations
-1 = present before year 1995 or in 1995
-2 = present after year 1995
-3 = present before and after year 1995
-
-<!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
-```{r echo = FALSE, results = "asis"}
-tab <- t(data.frame(
-  c("Biodiversity:", "Red List"), 
-  c("Macrophytes:", "Least Concern (LC)"),
-  c("Least Concern (LC)", "Furcellaria lumbricalis (LC)")))
-
-colnames(tab) <- c("Option", "Specification")
-rownames(tab) <- NULL
-
-knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/cbfc8cc7-b9db-48e2-940f-22c2f8b10c9d) <br/> Downloaded 23 Febryary 2021 by Andrea De Cervo") 
-```
-
-<br/>
-
-**Chara horrida observations (NT)**
-
-Observations of Chara horrida were collected from the Baltic Sea area for HELCOM Red List species list.
-Chara horrida has been placed to the Red List category of Near threatened (NT) species.
-
-Dataset for download contains spatial grid of the Baltic Sea. 
-Distribution of the species can be found in corresponding name column. 
-Values are coded:
-0 = no observations
-1 = present before year 1995 or in 1995
-2 = present after year 1995
-3 = present before and after year 1995
-
-<!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
-```{r echo = FALSE, results = "asis"}
-tab <- t(data.frame(
-  c("Biodiversity:", "Red List"), 
-  c("Macrophytes:", "Near threatened (NT)"),
-  c("Near threatened (NT)", "Chara horrida (NT)")))
-
-colnames(tab) <- c("Option", "Specification")
-rownames(tab) <- NULL
-
-knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/b88e2106-459f-48c6-94e7-5270f4cbc2a5) <br/> Downloaded 23 February 2021 by Andrea De Cervo") 
-```
-
-<br/>
-
-**Potamogeton friesii observations (NT)**
-
-Observations of Potamogeton friesii were collected from the Baltic Sea area for HELCOM Red List species list.
-Potamogeton friesii has been placed to the Red List category of Near threatened (NT) species.
-
-Dataset for download contains spatial grid of the Baltic Sea. 
-Distribution of the species can be found in corresponding name column. 
-Values are coded:
-0 = no observations
-1 = present before year 1995 or in 1995
-2 = present after year 1995
-3 = present before and after year 1995
-
-<!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
-```{r echo = FALSE, results = "asis"}
-tab <- t(data.frame(
-  c("Biodiversity:", "Red List"), 
-  c("Macrophytes:", "Near threatened (NT)"),
-  c("Near threatened (NT)", "Potamogeton friesii (NT)")))
-
-colnames(tab) <- c("Option", "Specification")
-rownames(tab) <- NULL
-
-knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/5ee8a00c-bff4-44c8-9f3e-fc00d57e7bb2) <br/> Downloaded 23 February 2021 by Andrea De Cervo") 
-```
-
-<br/>
-
-**Crassula aquatica observations (NT)**
-
-Observations of Crassula aquatica were collected from the Baltic Sea area for HELCOM Red List species list.
-Crassula aquatica has been placed to the Red List category of Near threatened (NT) species.
-
-Dataset for download contains spatial grid of the Baltic Sea. 
-Distribution of the species can be found in corresponding name column. 
-Values are coded:
-0 = no observations
-1 = present before year 1995 or in 1995
-2 = present after year 1995
-3 = present before and after year 1995
-
-<!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
-```{r echo = FALSE, results = "asis"}
-tab <- t(data.frame(
-  c("Biodiversity:", "Red List"), 
-  c("Macrophytes:", "Near threatened (NT)"),
-  c("Near threatened (NT)", "Crassula aquatica (NT)")))
-
-colnames(tab) <- c("Option", "Specification")
-rownames(tab) <- NULL
-
-knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/dfeb7c1d-27a7-4687-81d3-279c7eac3641) <br/> Downloaded 23 February 2021 by Andrea De Cervo") 
-```
-
-<br/>
-
-**Persicaria foliosa observations (EN)**
-
-Observations of Persicaria foliosa were collected from the Baltic Sea area for HELCOM Red List species list.
-Persicaria foliosa has been placed to the Red List category of Endangered (EN) species.
-
-Dataset for download contains spatial grid of the Baltic Sea. 
-Distribution of the species can be found in corresponding name column. 
-Values are coded:
-0 = no observations
-1 = present before year 1995 or in 1995
-2 = present after year 1995
-3 = present before and after year 1995
-
-<!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
-```{r echo = FALSE, results = "asis"}
-tab <- t(data.frame(
-  c("Biodiversity:", "Red List"), 
-  c("Macrophytes:", "Endangered (EN)"),
-  c("Endangered (EN)", "Persicaria foliosa (EN)")))
-
-colnames(tab) <- c("Option", "Specification")
-rownames(tab) <- NULL
-
-knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/52bb349b-04c9-4908-9580-5d7192ba00e2) <br/> Downloaded 23 February 2021 by Andrea De Cervo") 
-```
-
-<br/>
 
 #### 2.1.2 Habitats Data {-}
 
@@ -391,74 +198,21 @@ knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metada
 
 <br/>
 
-**Furcellaria lumbricalis distribution**
-
-Distribution of Furcellaria lumbricalis based on data submission by HELCOM contracting parties. Mainly pointwise occurrences of Furcellaria were submitted, originally gathered in national mapping and monitoring campaigns, or for scientific research purposes. From Estonian waters, a predictive model was used (200m resolution), that was converted to presence/absence using minimized difference threshold (MDT) criteria. For Poland, only confirmed occurrence of Furcellaria were included (Slupsk bansk, Rowy reef and reef at Orlowo cliff). All data (Furcellaria points and the raster presenting predicted presence of Furcellaria) were generalized to 5km x 5km grid cells.
-
-Raster value representing presence (1) or absence (0) of Furcellaria lumbricalis.
-
-<!-- dataset save location BHI_share/BHI 3.0/Goals/CS/HELCOM_species -->
-```{r echo = FALSE, results = "asis"}
-tab <- t(data.frame(
-  c("Biodiversity:", "Ecosystem components (BSII)"), 
-  c("Benthic species:", "Furcellaria lumbricalis distribution")))
-
-colnames(tab) <- c("Option", "Specification")
-rownames(tab) <- NULL
-
-knitr::kable(tab, caption = "Source: [HELCOM Map and Data Service](http://metadata.helcom.fi/geonetwork/srv/eng/catalog.search#/metadata/363cb353-46da-43f4-9906-7324738fe2c3) <br/> Downloaded 23 February 2021 by Andrea De Cervo") 
-```
-
-<br/>
-
 
 ### 2.2 Centralization & Normalization
 
+Load raw raster and shapefiles
 ```{r cs load raw data, echo = TRUE, message = FALSE, warning = FALSE, results = "hide"}
 ### find a code to load multiple shp 
 ## load helcom species
 macrophytes <- sf::st_read(file.path(
-  dir_rawdata, "HELCOM_species", "Zostera_marina_LC",
+  dir_rawdata, "HELCOM_species", "Macrophytes",
   "Join_macrophytes.shp"
 )) # CRS: 3035 
 
-# crs(zostera_lc)
+# crs(macrophytes)
 # "+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs "
 
-chara_con_lc <- sf::st_read(file.path(
-  dir_rawdata, "HELCOM_species", "Chara_connivens_LC",
-  "Join_macrophytes.shp"
-)) # CRS: 3035
-
-chara_tom_lc <- sf::st_read(file.path(
-  dir_rawdata, "HELCOM_species", "Chara_tomentosa_LC",
-  "Join_macrophytes.shp"
-)) # CRS: 3035
-
-chara_hor_nt <- sf::st_read(file.path(
-  dir_rawdata, "HELCOM_species", "Chara_horrida_NT",
-  "Join_macrophytes.shp"
-)) # CRS: 3035
-
-crassula_nt <- sf::st_read(file.path(
-  dir_rawdata, "HELCOM_species", "Crassula_aquatica_NT",
-  "Join_macrophytes.shp"
-)) # CRS: 3035
-
-furcellaria_lc <- sf::st_read(file.path(
-  dir_rawdata, "HELCOM_species", "Furcellaria_lumbricalis_LC",
-  "Join_macrophytes.shp"
-)) # CRS: 3035
-
-persicaria_en <- sf::st_read(file.path(
-  dir_rawdata, "HELCOM_species", "Persicaria_foliosa_EN",
-  "Join_macrophytes.shp"
-)) # CRS: 3035
-
-potamogeton_nt <- sf::st_read(file.path(
-  dir_rawdata, "HELCOM_species", "Potamogeton_friesii_NT",
-  "Join_macrophytes.shp"
-)) # CRS: 3035
 
 ## load helcom habitats
 # library(raster)
@@ -473,15 +227,7 @@ plot(bays)
 
 ```
 
-#### 2.2.1 Rename Fields/Variables
-
-#### 2.2.2 Standardize Units
-
-#### 2.2.3 Save to BHI Database
-
 <br/>
-
-### 2.3 Initial Data Exploration
 
 ```{r cs setup spatial functions and files, warning = FALSE, include = FALSE}
 ## in order to assign bhi regions to data, must run this function first, to load required shapefiles:
@@ -499,7 +245,7 @@ bhi <- rgdal::readOGR(dsn = path.expand(file.path(dir_A, "Shapefiles", "BHI_shap
 # crs(bhi)
 # "+proj=longlat +datum=WGS84 +no_defs "
 macrophytes <- rgdal::readOGR(dsn = path.expand(file.path(dir_rawdata, "HELCOM_species", 
-                                                          "Zostera_marina_LC")),
+                                                          "Macrophytes")),
                       layer = 'Join_macrophytes') 
 
 ## transform macrophytes to bhi coordinate reference system (CRS)
@@ -518,6 +264,7 @@ basin_lookup <- file.path(dir_prep, "supplement", "lookup_tabs", "rgns_complete.
   )
 ```
 
+<br/> 
 
 ```{r intersect bhi and macrophytes, echo=FALSE, message=FALSE, cache=TRUE}
 library(rgdal)  # install.packages('rgdal')
@@ -531,18 +278,19 @@ library(sp)
 bhi_buff <- gBuffer(bhi, byid=TRUE, width=0)
 macrophytes_buff <- gBuffer(macrophytes_transf, byid=TRUE, width=0) 
 
+#intersect macrophytes and bhi shapefiles
 macrophytes_bhi <- raster::intersect(macrophytes_buff, bhi_buff)
-# system.time({mpa_bhi <- raster::intersect(helcom_mpas, bhi_transf)})
-## system.time({mpa_bhi <- raster::intersect(mpa, bhi)}) # large file size and took hours to run. bhi ~ 45.5 Mb, mpa ~ 8.7 Mb.
-View(macrophytes_bhi@data)
 
 ## save intersected shapefile
 writeOGR(macrophytes_bhi, dsn = path.expand(dir_intermediate), layer = 'macrophytes_bhi', driver = 'ESRI Shapefile', overwrite = TRUE) 
 
 ```
 
+<br/>
 
-```{r CODE CHUNK WITH FIGURE OR GRAPH, message = FALSE, echo = TRUE, fig.width = 9.5, fig.height = 4.5}
+#### 2.2.1 Rename Fields/Variables
+
+```{r load the intersected shapefile, echo=FALSE, message=FALSE, cache=TRUE}
 regions_shape()
 library(leaflet)
 # read intersected shapefile
@@ -553,9 +301,29 @@ macro_bhi <- sf::st_read(file.path(
   rename(helcom_id = HELCOM_ID, 
          country = rgn_nam) %>% 
   gather(key = "species", value = "presence", -CELLCODE, -country, - Subbasin, -BHI_ID, 
-         -helcom_id, -Area_km2, -geometry)
+         -helcom_id, -Area_km2, -geometry, -rgn_key) %>% 
+  # only select present macrophytes
+  filter(presence %in% c(2, 3)) %>% 
+  filter(species %in% c("C_conniven", "C_horrida", "C_tomentos", "Crassula_a", "Persicaria", 
+                        "Potamogeto", "Z_marina")) %>% 
+  # each grid cell is 100km2
+  mutate(area_m2 = geometry %>% st_area()*1000 # unit in m2 
+         ) 
 
-plot(st_geometry(macro_bhi), axes = TRUE)
+```
+
+
+#### 2.2.2 Standardize Units
+
+#### 2.2.3 Save to BHI Database
+
+<br/>
+
+### 2.3 Initial Data Exploration
+
+
+```{r create macrophytes basemap, message = FALSE, echo = TRUE, fig.width = 9.5, fig.height = 4.5}
+# plot(st_geometry(macro_bhi), axes = TRUE)
 
 ## make basemap
 basemap <- ggplot2::ggplot(rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")) + 
@@ -566,18 +334,14 @@ basemap <- ggplot2::ggplot(rnaturalearth::ne_countries(scale = "medium", returnc
 
 bhi_rgns_simple <- rmapshaper::ms_simplify(input = BHI_rgns_shp) %>% sf::st_as_sf()
 
-basemap +
+macro_plot <- basemap +
   geom_sf(data = bhi_rgns_simple, fill = "white", size = 0.2, color = "burlywood") +
   geom_sf(
-    mapping = aes(colour = presence),
-    data = sf::st_as_sf(
-      macro_bhi, 
-      crs = 4326
-    ),
-    size = 1.8
+    data = macro_bhi,  crs = 4326,
+    mapping = aes(fill = species), show.legend = T,
   ) +
-  labs(x = NULL, y = NULL, colour = "Monitoring area") +
-  ggtitle("Sampling Locations")
+  labs(x = NULL, y = NULL, colour = "Species") +
+  ggtitle("Macrophytes")
 
 # map polygons
 ggplot() + 
